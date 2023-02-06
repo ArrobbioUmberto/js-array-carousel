@@ -51,3 +51,25 @@ arrowElementLeft.addEventListener('click', function(){
 	console.log('next slide', indiceSlideAttiva)
 })
 
+
+// Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell’array fornito per generare 
+// il markup delle slide potete usare la concatenazione delle stringe, il template literal o il metodo createElement… a voi la scelta.
+// Nel generare il markup fate attenzione che solo una delle 5 slide deve avere la classe active e risultare quindi visibile…
+
+const whereAppendHTMLElement = document.getElementsByClassName('carousel')
+console.log(whereAppendHTMLElement)
+
+
+
+// ciclo delle immagini che devono scorrere 
+
+// for (i = 0; i < picture.length; i++){
+//     picture = picture[i]
+//     console.log(picture[i])
+// }
+
+whereAppendHTMLElement.innerHTML =`  
+<div class="slide">
+        <img src="${picture}" alt="">
+</div>`
+console.log(whereAppendHTMLElement.innerHTML)
