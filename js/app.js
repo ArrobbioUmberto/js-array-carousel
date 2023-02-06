@@ -17,6 +17,20 @@ let indiceSlideAttiva = 0
 // milestone 2 Al click dell’utente sulle frecce (una a sinistra e una a destra), il programma cambierà l’immagine attiva, 
 // che quindi verrà visualizzata al posto della precedente. Attenzione quando arriviamo all’ultima slide e 
 // clicchiamo sulla freccia destra, o viceversa se siamo sulla prima e clicchiamo sulla freccia sinistra.
+let  carousel = document.querySelector('.carousel')
+
+for (i = 0; i < picture.length; i++){
+    let slide = document.createElement('div')
+    slide.classList.add('slide')
+    if (i==0){
+        slide.classList.add('active')
+    }
+
+    let image = document.createElement('img')
+    image.src = picture[i]
+    slide.appendChild(image)
+    carousel.appendChild(slide)
+}
 
 arrowElementRight.addEventListener('click', function () {
     console.log('current slide', indiceSlideAttiva)
@@ -56,20 +70,10 @@ arrowElementLeft.addEventListener('click', function(){
 // il markup delle slide potete usare la concatenazione delle stringe, il template literal o il metodo createElement… a voi la scelta.
 // Nel generare il markup fate attenzione che solo una delle 5 slide deve avere la classe active e risultare quindi visibile…
 
-const whereAppendHTMLElement = document.getElementsByClassName('carousel')
-console.log(whereAppendHTMLElement)
-
-
 
 // ciclo delle immagini che devono scorrere 
 
-// for (i = 0; i < picture.length; i++){
-//     picture = picture[i]
-//     console.log(picture[i])
-// }
 
-whereAppendHTMLElement.innerHTML =`  
-<div class="slide">
-        <img src="${picture}" alt="">
-</div>`
-console.log(whereAppendHTMLElement.innerHTML)
+
+
+
