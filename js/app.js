@@ -5,7 +5,7 @@
 
 let picture = ['./img/img1.jpeg', './img/img2.jpeg', './img/img3.jpeg', './img/img4.webp', './img/img5.jpg', './img/img6.webp']
 
-const slideElements = document.querySelectorAll('.slide')
+const slideElements = document.querySelectorAll('.carousel .slide')
 console.log(slideElements)
 const arrowElementRight = document.querySelector('.arrow-right')
 console.log(arrowElementRight)
@@ -19,10 +19,55 @@ let indiceSlideAttiva = 0
 // clicchiamo sulla freccia destra, o viceversa se siamo sulla prima e clicchiamo sulla freccia sinistra.
 let  carousel = document.querySelector('.carousel')
 
+
+arrowElementRight.addEventListener('click', function () {
+
+	if (indiceSlideAttiva > 0){
+		console.log('current slide', indiceSlideAttiva)
+		// avendo inserito il ciclo for che genera l'HTML non mi definisce più la parte di slide.corrente 
+			let slideCorrente = slideElements[indiceSlideAttiva]
+			console.log(slideCorrente)
+			// togliendo la classe active
+			slideCorrente.classList.remove('active')
+		
+			// incremento l'indice
+			indiceSlideAttiva += 1
+		
+			let prossimaSlide = slideElements[indiceSlideAttiva]
+			// aggiungiamo la classe active alla seconda slide
+			prossimaSlide.classList.add('active')
+		
+		
+			console.log('next slide', indiceSlideAttiva)
+	}
+   
+})
+arrowElementLeft.addEventListener('click', function(){
+    console.log('current slide', indiceSlideAttiva)
+
+	if (indiceSlideAttiva < slideElements.lenght - 1) {
+		
+		let slideCorrente = slideElements[indiceSlideAttiva]
+		// togliendo la classe active
+		slideCorrente.classList.remove('active')
+	
+		// inremento l'indice
+		indiceSlideAttiva -= 1
+	
+		let prossimaSlide = slideElements[indiceSlideAttiva]
+		// aggiungiamo la classe active alla seconda slide
+		prossimaSlide.classList.add('active')
+	
+		console.log('next slide', indiceSlideAttiva)
+	}
+
+	
+})
+
 for (i = 0; i < picture.length; i++){
     let slide = document.createElement('div')
     slide.classList.add('slide')
-    if (i==0){
+    if (i=0){
         slide.classList.add('active')
     }
 
@@ -31,39 +76,6 @@ for (i = 0; i < picture.length; i++){
     slide.appendChild(image)
     carousel.appendChild(slide)
 }
-
-arrowElementRight.addEventListener('click', function () {
-    console.log('current slide', indiceSlideAttiva)
-
-	let slideCorrente = slideElements[indiceSlideAttiva]
-	// togliendo la classe active
-	slideCorrente.classList.remove('active')
-
-	// inremento l'indice
-	indiceSlideAttiva += 1
-
-	let prossimaSlide = slideElements[indiceSlideAttiva]
-	// aggiungiamo la classe active alla seconda slide
-	prossimaSlide.classList.add('active')
-
-	console.log('next slide', indiceSlideAttiva)
-})
-arrowElementLeft.addEventListener('click', function(){
-    console.log('current slide', indiceSlideAttiva)
-
-	let slideCorrente = slideElements[indiceSlideAttiva]
-	// togliendo la classe active
-	slideCorrente.classList.remove('active')
-
-	// inremento l'indice
-	indiceSlideAttiva -= 1
-
-	let prossimaSlide = slideElements[indiceSlideAttiva]
-	// aggiungiamo la classe active alla seconda slide
-	prossimaSlide.classList.add('active')
-
-	console.log('next slide', indiceSlideAttiva)
-})
 
 
 // Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell’array fornito per generare 
